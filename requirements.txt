@@ -23,3 +23,6 @@ toml==0.10.2
 tqdm==4.62.3
 urllib3==1.26.7
 Werkzeug==2.0.2
+google-api-python-client==2.89.0
+google-auth-httplib2==0.1.0
+google-auth-oauthlib==1.0.0
