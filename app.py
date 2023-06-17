@@ -42,6 +42,20 @@ def generate_prompt(todo):
         todo.capitalize()
     )
 
+'''
+def generate_prompt(todo):
+    return """Generate a schedule with the 'todo tasks' where they are not in a time conflict with my 'busy tasks' ".
+
+todo:   [('hw', '120', 'Medium'), ('gym', '60', 'High'), ('grocery shopping', '30', 'High')]
+busy:   [('school', 8, 15), ('meeting', 16, 17)]
+schedule: [('school', 8, 15), ('grocery shopping', 15.25, 15.75), ('meeting', 16, 17), ('gym', 17.5, 18.5), ('homework', 19, 21)]
+
+todo: {}
+busy: list of events from google calendar
+schedule: """.format(
+        todo.capitalize()
+    )
+'''
 
 
 

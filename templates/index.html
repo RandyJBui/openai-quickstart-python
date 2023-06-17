@@ -55,7 +55,7 @@
       var pri = document.getElementById("todo-input-pri");
       var todoItem = document.createElement("li");
       todoItem.textContent = name.value + " " + dur.value + " " + pri.value;
-      tasks.push([name.value, dur.value, pri.value]);
+      tasks.push([[name.value, dur.value, pri.value]]);
       document.getElementById("todo-list").appendChild(todoItem);
       
       name.value = "";

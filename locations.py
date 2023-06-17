@@ -1,7 +1,5 @@
 import geocoder
 
-locationDict
-
     #test code, we need to return data back from flask after this point
 locationDict = {['2333 piedmont ave, Berkeley, CA'], ['Birge Path, Berkeley, CA 94704']}
 
