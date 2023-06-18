@@ -225,8 +225,8 @@ def index1():
             
            # table.append(res[i][1][11:] + '-' + res[i][2][11:])
         
-        #print(table)
-        return jsonify(f'{"res": {table}}')
+        print(table)
+        return jsonify('{"res": {table}}')
     return render_template('index.html')
         # response will return a new list with the most optimized order of tasks that work around events
         # print(response.choices[0].text) # used to test output
