@@ -17,7 +17,15 @@ function generate() {
     .catch(error => {
         console.error('Error:', error);
     });
-    
+
+    var table = document.getElementById("todo-list");
+    // sortTableByPriority(table)
+    for(let i = 0; i < result.length; i++){
+        var row = table.insertRow(i);
+        row.insertCell(0).innerHTML = result[i][0];
+        row.insertCell(1).innerHTML = result[i][1];
+        row.insertCell(2).innerHTML = result[i][2];
+    }
     
 }
 
@@ -84,7 +92,7 @@ document.getElementById("todo-form").addEventListener("submit", function(event) 
     row.insertCell(1).innerHTML = loc.value;
     row.insertCell(2).innerHTML = dur.value;
     row.insertCell(3).innerHTML = pri.value;
-    sortTableByPriority(table)
+    //sortTableByPriority(table)
 
     // reset input fields
     name.value = "";

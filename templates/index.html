@@ -26,11 +26,11 @@
 </head>
 
 <body>
-  <form action="/" method="POST" id="tod ido-form">
+  <form action="/" method="POST" id="todo-form">
     <h1>Scheduler</h1>
     
     <input type="text" name = "name" id="todo-input-name" placeholder="Enter a task" required />
-    <input type="text" name = "location"="autocomplete" placeholder="Enter an address (Optional)" />
+    <input type="text" name = "location" id="autocomplete" placeholder="Enter an address (Optional)" />
     <input type="number" name = "duration" id="todo-input-dur" placeholder="Duration (Min)" required />
     <select name="priority" id="todo-input-pri" placeholder="Priority" required >
       <option disabled selected value=""> -- Select a priority level -- </option>
@@ -58,7 +58,7 @@
   
   <div id="generate_schedule">
     <h1>Generated Schedule</h1>
-    <table id="scheduled" border="1" cellpadding="1">
+    <table id="todo-list-schedule" border="1" cellpadding="1">
       <tr>
         <th><b>Task</b></th>
         <th><b>Times</b></th>

@@ -1,11 +1,3 @@
-/* ETHAN DANIEL CHENNAULT'S TIPS ON CSS-ING
-- don't apply styles to entire element types, like h1, table, etc., which complicates styling in case you use these elements in different scenarios
-- apply styles to IDs (#id) and classes (.class), and be sure to add these tags to the HTML
-- keep it simple, both in style and code. Don't add too many styles/style settings, it's a waste of time
-*/
-
-
-
 @font-face {
   font-family: "ColfaxAI";
   src: url(https://cdn.openai.com/API/fonts/ColfaxAIRegular.woff2)
@@ -140,4 +132,14 @@ h1 {
 #todo-list th, #todo-list td {
   padding: 10px;
   text-align: center;
+}
+
+#todo-list-schedule{
+  padding: 1px 1px;
+  border: 2.5px solid #10a37f;
+  border-collapse: collapse;
+  table-layout: fixed;
+  word-wrap: break-word;
+  width: 100%;
+  margin-bottom: 20px;
 }

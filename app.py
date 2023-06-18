@@ -219,14 +219,14 @@ def index1():
        
         res=parser(response.choices[0].text)
         table = []
-       
         for i in range(len(res)):
             temp = [ res[i][0], res[i][1][11:] + '-' + res[i][2][11:], res[i][3] ]
             table.append(temp)
+            
            # table.append(res[i][1][11:] + '-' + res[i][2][11:])
         
         #print(table)
-        return jsonify(f'{"res": ${table}}')
+        return jsonify(f'{"res": {table}}')
     return render_template('index.html')
         # response will return a new list with the most optimized order of tasks that work around events
         # print(response.choices[0].text) # used to test output
