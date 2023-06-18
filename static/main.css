@@ -1,3 +1,11 @@
+/* ETHAN DANIEL CHENNAULT'S TIPS ON CSS-ING
+- don't apply styles to entire element types, like h1, table, etc., which complicates styling in case you use these elements in different scenarios
+- apply styles to IDs (#id) and classes (.class), and be sure to add these tags to the HTML
+- keep it simple, both in style and code. Don't add too many styles/style settings, it's a waste of time
+*/
+
+
+
 @font-face {
   font-family: "ColfaxAI";
   src: url(https://cdn.openai.com/API/fonts/ColfaxAIRegular.woff2)
@@ -13,50 +21,60 @@
   font-weight: bold;
   font-style: normal;
 }
-body,
-input {
-  font-size: 16px;
-  line-height: 24px;
-  color: #353740;
-  font-family: "ColfaxAI", Helvetica, sans-serif;
-}
+
 body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 60px;
+  width: 100%;
+  padding: 0px;
+  margin: 0 auto;
+  max-width: 650px;
+  line-height: 24px;
+  color: #353740;
+  font-family: "ColfaxAI", Helvetica, sans-serif;
+  font-size: 16px;
 }
-.icon {
-  width: 34px;
+
+::selection {
+  background: rgb(202, 239, 255);
 }
-h3 {
-  font-size: 32px;
-  line-height: 40px;
-  font-weight: bold;
-  color: #202123;
-  margin: 16px 0 40px;
+
+h1 {
+  text-align: center;
+  font-size: 28pt;
+  margin: 25px 0 25px 0;
+  width: full;
+  flex-basis: 100%;
 }
-form {
+
+#todo-form {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   padding: 20px;
-  width: 500px;
+  margin-top: 60px;
+  width: 100%;
   flex-wrap: wrap;
-  border: 1px solid #353740;
+  border: 2px solid #10a37f;
   border-radius: 4px;
 }
-input[type="text"] {
+
+#todo-form > * {
+  transition: background-color .3s ease, color .3s ease;
+}
+
+#todo-form input[type="text"] {
   border: 1px solid #10a37f;
   border-radius: 4px;
   padding: 12px 16px;
-  margin-bottom: 24px;
-  flex-basis: 100%;
-  width: 100%;
+  margin: 0 5px 24px 5px;
+  flex-basis: 41%;
   height: 25px;
 }
-input[type="number"] {
+
+#todo-form input[type="number"] {
   padding: 12px 16px;
   border: 1px solid #10a37f;
   border-radius: 4px;
@@ -64,30 +82,12 @@ input[type="number"] {
   height: 19px;
   margin-right: 10px;
 }
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-::placeholder {
-  color: #8e8ea0;
-  opacity: 1;
-}
-input[type="submit"] {
-  padding: 12px 0;
-  color: #fff;
-  background-color: #10a37f;
-  border: none;
-  border-radius: 4px;
-  text-align: center;
-  cursor: pointer;
-}
-.result {
-  font-weight: bold;
-  margin-top: 40px;
+
+#todo-form > input[type="text"]:hover, input[type="number"]:hover {
+  background-color: #F0F0F0;
 }
 
-select {
+#todo-form select {
   padding: 12px 16px;
   border: 1px solid #10a37f;
   border-radius: 4px;
@@ -95,10 +95,49 @@ select {
   height: 45px;
   margin-right: 10px;
 }
-form>button {
+
+#todo-form > select:hover {
+  background-color: #F0F0F0;
+  cursor: pointer;
+}
+
+.button {
   padding: 12px 16px;
   border: 1px solid #10a37f;
   border-radius: 4px;
-  width: 60px;
-  height: 45px;
+  cursor: pointer;
+  height: 100%;
+  background-color: initial;
+  color: black;
+  transition: background-color .3s ease, color .3s ease;
+}
+
+.button:hover {
+  background-color: #10a37f;
+  color: white;
+}
+
+#schedule {
+  margin-top: 20px;
+  width: 100%; 
+}
+
+#todo-list {
+  padding: 1px 1px;
+  border: 2.5px solid #10a37f;
+  border-collapse: collapse;
+  table-layout: fixed;
+  word-wrap: break-word;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* ensures that the task name box always covers the most of the table */
+#todo-list tr > *:first-child {
+  width: 30%;
+}
+
+#todo-list th, #todo-list td {
+  padding: 10px;
+  text-align: center;
 }

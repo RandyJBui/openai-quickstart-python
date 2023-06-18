@@ -1,5 +1,22 @@
 <!DOCTYPE html>
 <head>
+  <script 
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUu5mSd5dc5VdMJ3lrcvCDXY-SzaGZMas&libraries=places&callback=initAutocomplete" 
+    async defer>
+  </script>
+  <script> 
+    let autocomplete;
+    function initAutocomplete(){
+      autocomplete = new google.maps.places.Autocomplete(
+       document.getElementById('autocomplete'), 
+       { 
+         types: ['establishment'],
+         componentRestrictions: {'country' : ['US']},
+         fields: ['place_id', 'geometry', 'name']
+       });
+    }
+   </script>
+ 
   <title>OpenAI ToDo List Scheduler Of Awesomeness</title>
   <link
     rel="shortcut icon"
@@ -9,92 +26,51 @@
 </head>
 
 <body>
-  <!--<img src="{{ url_for('static', filename='dog.png') }}" class="icon" />
-  <h3>Name my pet</h3>
-  <form action="/" method="post">
-    <input type="text" name="animal" placeholder="Enter an animal" required />
-    <input type="submit" value="Generate names" />
+  <form action="/" method="POST" id="tod ido-form">
+    <h1>Scheduler</h1>
+    
+    <input type="text" name = "name" id="todo-input-name" placeholder="Enter a task" required />
+    <input type="text" name = "location"="autocomplete" placeholder="Enter an address (Optional)" />
+    <input type="number" name = "duration" id="todo-input-dur" placeholder="Duration (Min)" required />
+    <select name="priority" id="todo-input-pri" placeholder="Priority" required >
+      <option disabled selected value=""> -- Select a priority level -- </option>
+      <option value="Highest">Highest</option>
+      <option value="High">High</option>
+      <option value="Medium">Medium</option>
+      <option value="Low">Low</option>
+      <option value="Lowest">Lowest</option>
+    </select>
+    
+    <input class="button" type="submit" value="Add"/>
   </form>
-  {% if result %}
-  <div class="result">{{ result }}</div>
-  {% endif %}-->
-    
-    <form action="/" method="post" id="todo-form">
-      <h1>Todo List</h1>
-      <input type="text" name = "name" id="todo-input-name" placeholder="Enter a task" required/>
-      <input type="number" name = "duration" id="todo-input-dur" placeholder="Duration (Min)"/>
-      <select name="priority" id="todo-input-pri" placeholder="Priority">
-        <option disabled selected value=""> -- Select a priority level -- </option>
-        <option value="Highest">Highest</option>
-        <option value="High">High</option>
-        <option value="Medium">Medium</option>
-        <option value="Low">Low</option>
-        <option value="Lowest">Lowest</option>
-      </select>
-      <button type="submit">Add</button>
-    </form>
   
-  <ul id="todo-list">
-    <!-- Todo items will be dynamically added here -->
-  </ul>
-
-  <button onclick="generate()">Generate Schedule</button>
-
-  <text id="result">hello</text>
-
-  <script>
-    var tasks = []; // Array to store the tasks
-    
-    // dont change this is for adding tasks
-    document.getElementById("todo-form").addEventListener("submit", function(event) {
-      event.preventDefault();
-      
-      var name = document.getElementById("todo-input-name");
-      var dur = document.getElementById("todo-input-dur");
-      if (dur == 0) { dur = 30; }
-      var pri = document.getElementById("todo-input-pri");
-      var todoItem = document.createElement("li");
-      todoItem.textContent = name.value + " " + dur.value + " " + pri.value;
-      tasks.push([[name.value, dur.value, pri.value]]);
-      document.getElementById("todo-list").appendChild(todoItem);
-      
-      name.value = "";
-      dur.value = "";
-      pri.value = "";
-    });
-
-    // this is for generating with ai
-    function generate() {
-      var elem = document.getElementById("result");
-      elem.textContent = tasks;
-    }
-
-
-    /*var taskIndex = 0;
-
-    document.getElementById("add-task").addEventListener("click", function(event) {
-      event.preventDefault();
+  <div id="schedule">
+    <h1>ToDo List</h1>
+    <table id="todo-list" border="1" cellpadding="1">
+      <tr>
+        <th><b>Task</b></th>
+        <th><b>Location</b></th>
+        <th><b>Duration</b></th>
+        <th><b>Priority</b></th>
+      </tr>
+    </table>
+  </div>
   
-      taskIndex++;
+  <div id="generate_schedule">
+    <h1>Generated Schedule</h1>
+    <table id="scheduled" border="1" cellpadding="1">
+      <tr>
+        <th><b>Task</b></th>
+        <th><b>Times</b></th>
+        <th><b>Priority</b></th>
+      </tr>
+    </table>
+  </div>
+
+  <button class="button" onclick="generate()">Generate Schedule</button>
+
   
-      var taskInputs = document.createElement("div");
-      taskInputs.className = "task-input";
-      taskInputs.innerHTML = `
-        <input type="text" name="name${taskIndex}" placeholder="Enter a task name" required />
-        <input type="number" name="duration${taskIndex}" placeholder="Enter duration" required />
-        <select name="priority${taskIndex}">
-          <option value="Highest">Highest</option>
-          <option value="High">High</option>
-          <option value="Medium">Medium</option>
-          <option value="Low">Low</option>
-          <option value="Lowest">Lowest</option>
-        </select>`;
-  
-      document.getElementById("task-inputs").appendChild(taskInputs);
-});*/
-  </script>
-
-
-
-
+     <script src="{{ url_for('static', filename='script.js') }}"></script>
+ 
 </body>
+</html>
